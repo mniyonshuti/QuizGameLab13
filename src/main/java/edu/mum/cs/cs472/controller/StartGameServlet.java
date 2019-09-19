@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 @WebServlet("/start")
 public class StartGameServlet extends HttpServlet {
@@ -21,12 +23,14 @@ public class StartGameServlet extends HttpServlet {
             throws ServletException, IOException {
 
         resp.setContentType("text/html");
-
+        HttpSession session = req.getSession();
         Integer currCount = 0;
         int score = 0;
         quiz = new Quiz();
+
         req.setAttribute("question", quiz.getQuestion(currCount));
-        req.setAttribute("count", currCount);
+        session.setAttribute("quiz", quiz);
+        req.setAttribute("count", ++currCount);
         req.setAttribute("score", score);
         RequestDispatcher rd = req.getRequestDispatcher("question.jsp");
         rd.forward(req, resp);

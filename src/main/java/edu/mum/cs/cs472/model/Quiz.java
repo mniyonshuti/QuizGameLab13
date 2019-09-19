@@ -5,16 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 public class Quiz {
-    private static List<String > questionList = new ArrayList<>();;
-    private static List<Integer> answerList = new ArrayList<>();;
+    private static List<String > questionList = new ArrayList<>();
+    private static List<Integer> answerList = new ArrayList<>();
 
     public Quiz() {
         method();
-        questionList = new ArrayList<>();
-        answerList = new ArrayList<>();
     }
 
-    public static void method(){
+    public void method(){
         int count = 0;
         Random rand = new Random();
         int random = rand.nextInt(5);
@@ -28,7 +26,11 @@ public class Quiz {
                 count++;
             }
         }
+        setQuestionList(questionList);
+        setAnswerList(answerList);
     }
+
+
     private static String[] questions = {
             "3, 1, 4, 1, 5", //pi
             "1, 1, 2, 3, 5", //fibonacci
@@ -51,19 +53,19 @@ public class Quiz {
         return false;
     }
 
-    public static List<String> getQuestionList() {
+    public  List<String> getQuestionList() {
         return questionList;
     }
 
-    public static void setQuestionList(List<String> questionList) {
+    public  void setQuestionList(List<String> questionList) {
         Quiz.questionList = questionList;
     }
 
-    public static List<Integer> getAnswerList() {
+    public  List<Integer> getAnswerList() {
         return answerList;
     }
 
-    public static void setAnswerList(List<Integer> answerList) {
+    public  void setAnswerList(List<Integer> answerList) {
         Quiz.answerList = answerList;
     }
 }

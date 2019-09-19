@@ -13,14 +13,16 @@
 </head>
 <body>
 <h1>The Number Quiz</h1>
-<%
-    int score = (Integer) request.getAttribute("score");
-%>
+
 <p>Your current score is ${score} </p>
 <p>Guess the next number in the sequence</p>
 <p>"${question}"</p>
 <form action="guessNumber" method="post">
-    <p> Your answer: <input name="answer" type=\"number\" required></p>
+    <input type="hidden" name="questions" value="${questions}">
+    <input type="hidden" name="quiz" value="${quiz}">
+    <input type="hidden" name="score" value="${score}">
+    <input type="hidden" name="count" value="${count}">
+    <p> Your answer: <input name="answer" type="number" required></p>
     <p><input type="submit" value="Submit"></p>
 </form>
 </body>
